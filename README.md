@@ -32,6 +32,10 @@ I was waiting for a small universe of Java stuff to finish downloading and insta
 
 ## Requirements
 
+### twilio
+
+* A valid [Twilio](https://www.twilio.com/) account with enough credit to send outgoing phone calls.
+
 ### node.js
 
 * [node-markov](https://github.com/substack/node-markov)
