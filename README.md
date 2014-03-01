@@ -33,6 +33,12 @@ This is the thing that calls one or more people from your Twilio account. Note t
 
 	$> python ./caller.py --sid TWILIO_SID --token TWILIO_TOKEN --from TWILIO_NUMBER --url http://example.com:6677 PHONENUMBER_ONE PHONENUMBER_TWO 
 
+## putter.py
+
+This is a thing that will collect the output `sayer.js` and save it to an S3 bucket as a named key. This might be useful if you want to send the same message to a number of people.
+
+	$> python putter.py -u http://localhost:6677 -k AWS_ACCESSKEY -s AWS_SECRETKEY -b S3_BUCKETNAME -n MARKOVPHONE.xml
+
 ## Seed data
 
 You can specify anything that the [node-markov](https://github.com/substack/node-markov) package can read. I've included the latest seed data for the [@thisisaaronbot](https://twitter.com/thisisaaronbot) Twitter account as an example.
@@ -46,6 +52,12 @@ I was waiting for a small universe of Java stuff to finish downloading and insta
 ### twilio
 
 * A valid [Twilio](https://www.twilio.com/) account with enough credit to send outgoing phone calls.
+
+### S3
+
+_For use with `putter.py`_
+
+* A valid [Amazon Web Services](https://aws.amazon.com/) account.
 
 ### node.js
 
