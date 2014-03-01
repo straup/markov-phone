@@ -39,7 +39,7 @@ This is a thing that will collect the output `sayer.js` and save it to an S3 buc
 
 	$> python putter.py -u http://localhost:6677 -k AWS_ACCESSKEY -s AWS_SECRETKEY -b S3_BUCKETNAME -n MARKOVPHONE.xml
 
-## Putting it all together
+## daily.sh
 
 `daily.sh` is a simple shell script that is meant to be run every day. Think of it as like a mailing-list but one that calls people.
 
