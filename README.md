@@ -41,7 +41,7 @@ This is a thing that will collect the output `sayer.js` and save it to an S3 buc
 
 ## daily.sh
 
-`daily.sh` is a simple shell script that is meant to be run every day. Think of it as like a mailing-list but one that calls people.
+`daily.sh` is a simple shell script that wraps up all the other tools in "markov-phone" allowing them to be run every day as a cron job, or equivalent. Think of it as like a mailing-list but one that calls people.
 
 It does the following:
 
