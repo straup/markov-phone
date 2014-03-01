@@ -27,6 +27,7 @@ fi
 source ${CONFIG}
 
 # TO DO: check exit values from scripts (straup/20140301)
+# TO DO: check to see if DAILY already exists on S3 and skip steps accordingly? (straup/20140301)
 
 echo "starting up sayer.js"
 ((${NODE} ${SAYER} --seed ${MRKVPH_SAYER_SEED} --port ${MRKVPH_SAYER_PORT} --name ${MRKVPH_SAYER_NAME}) & echo $! > ${SAYER_PID})
