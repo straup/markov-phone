@@ -39,6 +39,40 @@ This is a thing that will collect the output `sayer.js` and save it to an S3 buc
 
 	$> python putter.py -u http://localhost:6677 -k AWS_ACCESSKEY -s AWS_SECRETKEY -b S3_BUCKETNAME -n MARKOVPHONE.xml
 
+## Putting it all together
+
+`daily.sh` is a simple shell script that is meant to be run every day. It does the following:
+
+* Reads configuration data from a [daily.cfg]() file. This contains things like the location of `sayer.js` seed data, your AWS and Twilio account credentials, the phone numbers you want to call from and two and any other data specific to you.
+* Starts up a copy of `sayer.js` on the local machine using a high-numbered TCP port.
+* Runs the `putter.py` script to collect data from the freshly invoked `sayer.js` server, saving the results to Amazon's S3 service as file named after the current date (YYYY-MM-DD.xml).
+* Runs the `caller.py` script to call one or more phone numbers using the Twilio API specifying the just created YYYY-MM-DD.xml file as its input.
+* Stops the `sayer.js` server.
+
+Here's an example of a `daily.cfg` file. Note that the `${ROOT}` and `${DAILY}` variables are defined in `daily.sh` script.
+
+	# sayer.js configs
+
+	MRKVPH_SAYER_NAME="Markov Bot"
+	MRKVPH_SAYER_SEED=${ROOT}data/thisisaaronbot.txt
+	MRKVPH_SAYER_HOST=localhost
+	MRKVPH_SAYER_PORT=9922
+	MRKVPH_SAYER_URL="http://${MRKVPH_SAYER_HOST}:${MRKVPH_SAYER_PORT}"
+
+	# putter.py configs
+
+	MRKVPH_AWS_KEY=S33KRET_AWS_KEY
+	MRKVPH_AWS_SECRET=S33KRET_AWS_SECRET
+	MRKVPH_S3_BUCKET=markovphone
+
+	# caller.py configs
+
+	MRKVPH_TWILIO_SID=S33KRET_TWILIO_SID
+	MRKVPH_TWILIO_TOKEN=S33KRET_TWILIO_TOKEN
+	MRKVPH_TWILIO_FROM=2025551212
+	MRKVPH_TWILIO_TO=5145551212
+	MRKVPH_TWILIO_URL="http://${MRKVPH_S3_BUCKET}.s3.amazonaws.com/${DAILY}"
+
 ## Seed data
 
 You can specify anything that the [node-markov](https://github.com/substack/node-markov) package can read. I've included the latest seed data for the [@thisisaaronbot](https://twitter.com/thisisaaronbot) Twitter account as an example.

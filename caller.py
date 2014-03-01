@@ -28,7 +28,7 @@ if __name__ == '__main__':
     
     for to_number in args:
         
-        logging.info("call %s" % to_number)
+        logging.info("call %s (%s)" % (to_number, opts.url))
 
         client = TwilioRestClient(opts.sid, opts.token)
         call = client.calls.create(to=to_number, from_=opts.from_number, url=opts.url, method=opts.method)
