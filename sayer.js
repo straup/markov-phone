@@ -32,8 +32,6 @@ if (argv['uid'] === undefined){
     // process.exit();
 }
 
-console.log(argv);
-
 console.log("Starting up " + argv['name']);
 console.log("Reading from " + argv['seed']);
 
