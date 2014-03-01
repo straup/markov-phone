@@ -13,8 +13,19 @@ For example:
 	<Response>
 		<Say>This is Aaron Bot, as a service.</Say>
 		<Pause/>
-		<Say>the set aside from the sky GOD LET bake for date taken justin bieber. earnest love you gotta wear glittery yet damien sacks hirst sippy</Say>
+		<Say>the set aside from the sky GOD LET bake for date taken justin bieber. earnest love you gotta wear glittery yet damien sacks hirst sippy.</Say>
 	</Response>
+
+You can also request a plain vanilla text version by passing in an `Accept: text/plain` HTTP header, like this:
+
+	$> curl -H 'Accept: text/plain' http://localhost:6677
+	oakland like is miller frank. internet in the hockey series will be in sydney.
+
+If you need to run `sayer.js` as a specific user you can specify a `--uid` parameter, like this:
+
+	$> sudo node sayer.js --seed data/thisisaaronbot.txt --name 'Aaron Bot' --uid 999
+
+_Note the sudo-iness of that example which is just short-hand for "you'll still need suitable permissions to be able to do things like switch user IDs"._
 
 ## caller.py
 
