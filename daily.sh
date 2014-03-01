@@ -21,10 +21,12 @@ CONFIG=${ROOT}/daily.cfg
 if [ ! -f ${CONFIG} ]
 then
     echo "Unabled to locate ${CONFIG}"
-    exit
+    exit 1
 fi
 
 source ${CONFIG}
+
+# TO DO: check exit values from scripts (straup/20140301)
 
 echo "starting up sayer.js"
 ((${NODE} ${SAYER} --seed ${MRKVPH_SAYER_SEED} --port ${MRKVPH_SAYER_PORT} --name ${MRKVPH_SAYER_NAME}) & echo $! > ${SAYER_PID})
@@ -36,7 +38,7 @@ echo "running putter.py"
 ${PUTTER} -u "${MRKVPH_SAYER_URL}" -k "${MRKVPH_AWS_KEY}" -s "${MRKVPH_AWS_SECRET}" -b "${MRKVPH_S3_BUCKET}" -n "${DAILY}" ${VERBOSE}
 
 echo "running caller.py"
-${CALLER} -s "${MRKVPH_TWILIO_SID}" -t "${MRKVPH_TWILIO_TOKEN}" -f "${MRKVPH_TWILIO_FROM}" -u "${MRKVPH_TWILIO_URL}" "${MRKVPH_TWILIO_TO}" ${VERBOSE}
+${CALLER} -s "${MRKVPH_TWILIO_SID}" -t "${MRKVPH_TWILIO_TOKEN}" -f "${MRKVPH_TWILIO_FROM}" -u "${MRKVPH_TWILIO_URL}" ${MRKVPH_TWILIO_TO} ${VERBOSE}
 
 echo "shutting down sayer.js"
 kill ${PID}
