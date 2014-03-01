@@ -43,7 +43,7 @@ This is a thing that will collect the output `sayer.js` and save it to an S3 buc
 
 `daily.sh` is a simple shell script that is meant to be run every day. It does the following:
 
-* Reads configuration data from a [daily.cfg]() file. This contains things like the location of `sayer.js` seed data, your AWS and Twilio account credentials, the phone numbers you want to call from and two and any other data specific to you.
+* Reads configuration data from a [daily.cfg](https://github.com/straup/markov-phone/blob/master/daily.cfg.example) file. This contains things like the location of `sayer.js` seed data, your AWS and Twilio account credentials, the phone numbers you want to call from and two and any other data specific to you.
 * Starts up a copy of `sayer.js` on the local machine using a high-numbered TCP port.
 * Runs the `putter.py` script to collect data from the freshly invoked `sayer.js` server, saving the results to Amazon's S3 service as file named after the current date (YYYY-MM-DD.xml).
 * Runs the `caller.py` script to call one or more phone numbers using the Twilio API specifying the just created YYYY-MM-DD.xml file as its input.
