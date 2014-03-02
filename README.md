@@ -77,7 +77,7 @@ Here's an example of a `daily.cfg` file. Note that the `${ROOT}` and `${DAILY}` 
 
 ## Seed data
 
-You can specify anything that the [node-markov](https://github.com/substack/node-markov) package can read. I've included the latest seed data for the [@thisisaaronbot](https://twitter.com/thisisaaronbot) Twitter account as an example.
+You can specify anything that the [node-markov](https://github.com/substack/node-markov) package can read. I've included the latest seed data for the [@thisisaaronbot](https://twitter.com/thisisaaronbot) Twitter account and a still-needs-to-be-cleaned-up extract of Dan Hon's [Things That Have Caught My Attention](https://tinyletter.com/danhon) mailing list as examples.
 
 ## Why did you do this?
 
@@ -107,3 +107,4 @@ _For use with `putter.py`_
 ## See also
 
 * https://github.com/bertrandom/thisisaaronbot
+* https://tinyletter.com/danhon
