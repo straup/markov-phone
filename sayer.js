@@ -5,6 +5,7 @@ var url = require('url');
 var fs = require('fs');
 var markov = require('markov');
 var opts = require('optimist');
+var strip = require('strip');
 
 // setup
 
@@ -50,18 +51,25 @@ else {
 var server = http.createServer(function(request, response){
 
     var send_txt = function(msg){
+
+	msg_clean = strip(msg);
+
 	response.writeHead(200, {"Content-Type": 'text/plain'});
-	response.write(msg);
+	response.write(msg_clean);
 	response.end();
     };
     
     var send_xml = function(msg){
+
+	name_clean = strip(argv['name']);
+	msg_clean = strip(msg);
+
 	response.writeHead(200, {"Content-Type": 'text/xml'});
 	response.write('<?xml version="1.0" encoding="UTF-8" ?>');
 	response.write('<Response>');
-	response.write('<Say>This is ' + argv['name'] + ', as a service.</Say>');
+	response.write('<Say>This is ' + name_clean + ', as a service.</Say>');
 	response.write('<Pause />');
-	response.write('<Say>' + msg + '</Say>');
+	response.write('<Say>' + msg_clean + '</Say>');
 	response.write('</Response>');
 	response.end();
     };

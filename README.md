@@ -99,6 +99,7 @@ _For use with `putter.py`_
 
 * [node-markov](https://github.com/substack/node-markov)
 * [node-optimist](https://github.com/substack/node-optimist) - I just noticed this has been deprecated so patches are welcome.
+* [node-strip](https://www.npmjs.org/package/strip)
 
 ### python
 
