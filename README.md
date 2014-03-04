@@ -31,6 +31,8 @@ If you need to run `sayer.js` as a specific user you can specify a `--uid` param
 
 _Note the sudo-iness of that example which is just short-hand for "you'll still need suitable permissions to be able to do things like switch user IDs"._
 
+### --doge
+
 Also, there's a `--doge` flag. No, really...
 
 	$> node sayer.js --seed data/hondanhon.txt --port 6677 --doge
