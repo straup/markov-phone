@@ -1,5 +1,9 @@
 # markov-phone
 
+_"You do realise you just implemented the robocaller script that caused downfall of humanity in Dollhouse, right?" – [Dan Hon](https://twitter.com/hondanhon/status/439863765450764289)_
+
+## What is this?
+
 Markov bots. That robo-call you. As a service.
 
 ## sayer.js
