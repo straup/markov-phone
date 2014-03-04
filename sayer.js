@@ -114,6 +114,77 @@ var server = http.createServer(function(request, response){
 	return line;
     };
 
+    // Okay. This is the part where a piece of relatively simple code gets silly
+    // and complicated. But you know... doge. So it stays for the time being...
+    // (20140304/straup)
+
+    var generateDoge = function(){
+
+	var generateDogeTreat = function(treat, tries){
+
+	    if (! tries){
+		tries = 1;
+	    }
+	    
+	    var words = m.fill(m.pick());
+	    
+	    for (i in words){
+
+		var w = words[i].toLowerCase();
+
+		if (w.length > 10){
+
+		    if (w != treat){
+			return w;
+		    }
+		}
+	    }
+
+	    if (tries == 10){
+		return 'KITTENS'
+	    }
+
+	    console.log("Couldn't find treat! Trying again...");
+
+	    tries = tries + 1;
+	    return generateDogeTreat(treat, tries);
+	};
+	
+	var shuffle = function(array) {
+
+	    for (var i = array.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	    }
+
+	    return array;
+	}
+
+	var doge = new Array('very', 'wow', 'much', 'wow', 'how', 'amaze');
+	var count = doge.length;
+
+	var idx = Math.floor((Math.random() * count)); 
+	var extra = doge[idx];
+	console.log('add ' + extra);
+
+	doge.push(extra);
+	doge = shuffle(doge);
+
+	var msg = new Array();
+	var treat = '';
+
+	for (var d in doge){
+	    treat = generateDogeTreat(treat);
+	    // console.log(doge[d] + ' gets ' + treat);
+	    msg.push(doge[d] + ' ' + treat);
+	}
+
+	msg = msg.join(' ', msg);
+	return msg;
+    }
+
     var maxLength1 = Math.floor(Math.random()*(98-38+1)+38);
     var maxLength2 = 140 - 3 - maxLength1;
 
@@ -121,7 +192,15 @@ var server = http.createServer(function(request, response){
     var s = fs.createReadStream(argv['seed']);
 
     m.seed(s, function (){
-	var msg = generateLine(maxLength1) + '. ' + generateLine(maxLength2) + '.';
+
+	if (argv['doge']){
+	    var msg = generateDoge();
+	}
+
+	else {
+	    var msg = generateLine(maxLength1) + '. ' + generateLine(maxLength2) + '.';
+	}
+	
 	send_msg(msg);
     });
 

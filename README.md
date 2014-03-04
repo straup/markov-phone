@@ -31,11 +31,19 @@ If you need to run `sayer.js` as a specific user you can specify a `--uid` param
 
 _Note the sudo-iness of that example which is just short-hand for "you'll still need suitable permissions to be able to do things like switch user IDs"._
 
+Also, there's a `--doge` flag. No, really...
+
+	$> node sayer.js --seed data/hondanhon.txt --port 6677 --doge
+
+	$> curl -H 'Accept: text/plain' 'http://localhost:6677'
+
+	very refreshingly amaze educatedish wow pseudo-closed much scrapbooking how rediscovered wow mobile/social/communications much rose-tinted
+
 ## caller.py
 
 This is the thing that calls one or more people from your Twilio account. Note the part where we are passing the url for the `sayer.js` server. This is what will be sent to the phone numbers you've specified.
 
-	$> python ./caller.py --sid TWILIO_SID --token TWILIO_TOKEN --from TWILIO_NUMBER --url http://example.com:6677 PHONENUMBER_ONE PHONENUMBER_TWO 
+	$> python caller.py --sid TWILIO_SID --token TWILIO_TOKEN --from TWILIO_NUMBER --url http://example.com:6677 PHONENUMBER_ONE PHONENUMBER_TWO 
 
 ## putter.py
 
